@@ -3,7 +3,7 @@
 import React from 'react'
 import { useAuth } from '../auth/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import {  ShoppingBasket } from 'lucide-react';
+import {  Pointer, ShoppingBasket } from 'lucide-react';
 import { useCart } from '../auth/CartContext';
 
 
@@ -14,9 +14,8 @@ function Header() {
      const {cart} = useCart();
        const navLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Products', path: '/' },
-        { name: 'Contact', path: '/' },
         { name: 'About', path: '/' },
+        { name: 'Books', path: '/' },
     ];
 
     const ref = React.useRef(null)
@@ -24,6 +23,7 @@ function Header() {
     const [isScrolled, setIsScrolled] = React.useState(false);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const navigate = useNavigate()
+    
     React.useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
@@ -32,7 +32,7 @@ function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-        
+   
     const handleLogout= async()=>{
      await logout();
         navigate('/');
@@ -42,10 +42,6 @@ function Header() {
         return(
 
              <div className="hidden md:flex items-center gap-4">
-                    <svg className={`h-6 w-6 text-white transition-all duration-500 ${isScrolled ? "invert" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
                     <button onClick={()=> navigate("/login")} className={`  ml-4  ${isScrolled ? "text-white bg-[#F86D72]" : "bg-[#F86D72] text-white"}`}>
                         Login
                     </button>
@@ -92,17 +88,17 @@ function Header() {
     return (
      
            
-            <nav className={`fixed top-0 left-0 bg-white w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${isScrolled ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4" : "py-4 md:py-6"}`}>
+            <nav className={` top-0 left-0 bg-white w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${isScrolled ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4" : "py-4 md:py-6"}`}>
 
                 {/* Logo */}
-                <a href="https://prebuiltui.com shrink-0" className="flex items-center w-50 h-50 gap-2">
+                <a href="/" className="flex items-center w-50 h-50 gap-2">
                     <img className=' h-32 object-contain' src='/logo.png'  alt = "logo"/>
                 </a>
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex items-center gap-4 lg:gap-8">
                     {navLinks.map((link, i) => (
-                        <a key={i} href={link.path} className={`group flex flex-col gap-0.5 ${isScrolled ? "text-gray-700" : "text-gray-700"}`}>
+                        <a key={i}  href={link.path} className={`group flex flex-col cursor-pointer   gap-0.5 ${isScrolled ? "text-gray-700" : "text-gray-700"}`}>
                             {link.name}
                             <div className={`${isScrolled ? "bg-gray-700" : "text-gray-700"} h-0.5 w-0 group-hover:w-full transition-all duration-300`} />
                         </a>
@@ -133,7 +129,9 @@ function Header() {
                     </a>
 
                     {navLinks.map((link, i) => (
-                        <a key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
+                        <a key={i} href={link.path}  className=" cursor-pointer" onClick={() => {
+                             setIsMenuOpen(false);
+                         }}>
                             {link.name}
                         </a>
                     ))}

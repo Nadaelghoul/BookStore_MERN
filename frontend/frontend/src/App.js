@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import {AuthProvider} from './auth/AuthContext';
 import { CartProvider } from './auth/CartContext';
+import FeaturedProducts from './components/FeaturedProducts';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element = {  <CartPage/>}/>
+         <Route path="/featured" element = {  <FeaturedProducts/>}/>
         <Route path="/on-sale" element = {  <OnSaleProducts/>}/>
         <Route path="/discount" element = {  <DiscountPercent/>}/>
          <Route path="/bookDetails/:id" element = {  <BookDetails/>}/>

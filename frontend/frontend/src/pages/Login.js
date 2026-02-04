@@ -13,10 +13,10 @@ function Login() {
 
 
     const onSubmit= async(e)=>{
-   e.preventDefault()
-   setErr("")
-   setLoading(true)
-   try {
+     e.preventDefault()
+     setErr("")
+     setLoading(true)
+     try {
 
     const res = await fetch("http://localhost:5000/users/signin",{
         method:"POST",
@@ -29,7 +29,7 @@ function Login() {
 
     if (!res.ok) throw new Error(data?.message || "Login failed");
 
-    setUser(data.user); // ✅ this updates the header automatically
+    setUser(data.user); // this updates the header automatically
     const role = data?.role || "user"
 
     const redirect = data?.redirect || (role === "admin" ? "/admin" : "/")

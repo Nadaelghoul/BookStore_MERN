@@ -26,7 +26,7 @@ h3::before{
 }
 
 button{
-  background: #F86D72;
+  background: #083344;
   color: white;
   border-radius: 17px;
   padding: 10px;
@@ -34,7 +34,7 @@ button{
   transition: 0.3s all;
 }
 button:hover{
-  background: #dd6165;
+  background: #115e59;
 }
 
 code {

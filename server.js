@@ -2,10 +2,15 @@ const express = require("express")
 const app = express()
 
 const cors = require("cors")
-app.use(cors({
-  origin: "http://localhost:3000", // ✅ frontend origin only
-  credentials: true,               // ✅ allow cookies/auth
-}));
+app.use(
+  cors({
+    origin: "http://localhost:3000", 
+    credentials: true,
+    methods:['GET', 'POST', 'PUT','DELETE'],
+    allowedHeaders:['Content-Type', 'Authorization']             
+  })
+);
+
 const cookieParser = require("cookie-parser")
 
 const dotenv = require("dotenv").config()

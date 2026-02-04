@@ -12,13 +12,16 @@ function CartPage() {
 
 
     }
+      const totalCart = cart?.items?.reduce((sum, item) => sum + item?.price * item?.quantity, 0);
+
   return (
-    <div className='mt-44 min-h-screen p-10'>
+    <div className='mt-30 min-h-screen p-10'>
         
-        <h3 className="my-5"> My Cart</h3>
+        <div className=" flex justify-center align-center my-5"><h3> My Cart</h3></div>
 
         <div className='space-y-4'>
             {cart?.items?.map((item)=> (
+
                 <div className='flex items-center gap-4 border rounded-lg p-4 shadow-sm'>
                     <img src={`http://localhost:5000/images/${item?.book?.coverImage}`} className='rounded w-24 h-32 object-cover'/>
 
@@ -45,9 +48,15 @@ function CartPage() {
                 </div>
             ))}
         </div>
-
+       <div className="mt-8 p-6 border rounded-lg shadow-md flex justify-center items-center">
+             <h2 className="text-xl font-semibold mr-2">Total Cart:</h2>
+              <span className="text-2xl font-bold text-[#115e59]">
+                   ${totalCart?.toFixed(2)}
+             </span>
+    </div>
 
     </div>
+    
   )
 }
 

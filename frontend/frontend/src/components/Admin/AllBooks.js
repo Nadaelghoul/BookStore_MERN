@@ -58,16 +58,16 @@ if(error){
     <div className='mt-10'>
       <h3 className='my-6'>All Products</h3>
       <div className='grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4  gap-4 '>
-       {bookList?.map((book) => (
-          <a href={`/admin/update-book/${book?._id}`}>
-          <div className='flex flex-col gap-5 border border-gray-300 p-4 rounded-lg'>
-          <img src={`http://localhost:5000/images/${book.coverImage}` }/>
-          <h6>{book?.title}</h6>
-           <span className='text-gray-400'>{book?.author}</span>
-          <strong className='text-[#F86D72]'>{book?.price} $</strong>
-        </div>
-        </a>
-        ))}
+      {bookList?.map((book) => (
+        <a key={book._id} href={`/admin/update-book/${book?._id}`}>
+       <div className='flex flex-col gap-5 border border-gray-300 p-4 rounded-lg'>
+       <img src={`http://localhost:5000/images/${book.coverImage}`} />
+       <h6>{book?.title}</h6>
+      <span className='text-gray-400'>{book?.author}</span>
+      <strong className='text-[#F86D72]'>{book?.price} $</strong>
+      </div>
+      </a>
+    ))}
       </div>
     </div>
   );
