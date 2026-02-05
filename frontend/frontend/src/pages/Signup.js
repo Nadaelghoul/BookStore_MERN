@@ -69,7 +69,7 @@ return (
         {err && <p className="text-red-500 text-sm">{err}</p>}
         <button
           disabled={loading}
-          className="bg-[#F86D72] text-white px-4 py-2 rounded w-full"
+          className="bg-[#083344] text-white px-4 py-2 rounded w-full"
         >
           {loading ? "..." : "Create account"}
         </button>

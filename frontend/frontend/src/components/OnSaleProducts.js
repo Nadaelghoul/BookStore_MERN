@@ -30,7 +30,7 @@ function OnSaleProducts() {
      <div className='grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4  gap-4 '>
         {isOnSale?.map((book) => (
         
-          <div key={book._id} className='flex flex-col items-center  p-4 rounded-lg'>
+          <div key={book._id} className='relative flex flex-col items-center border p-4 rounded-lg'>
                       <Link to={`/bookDetails/${book?._id}`}>
                       <img className='w-full h-[450px] ' src={`http://localhost:5000/images/${book.coverImage}`} />
                      

@@ -38,7 +38,7 @@ function DiscountPercent() {
 
   <Link to={`/bookDetails/${book?._id}`}>
     <img
-      className="w-full h-[450px] object-cover rounded-md"
+      className='w-full h-[90%] object-contain '
       src={`http://localhost:5000/images/${book.coverImage}`}
       alt={book.title}
     />

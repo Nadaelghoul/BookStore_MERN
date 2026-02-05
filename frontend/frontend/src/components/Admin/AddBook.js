@@ -117,9 +117,6 @@ function AddBook() {
     const res = await fetch("http://localhost:5000/admin/createBook", {
      method: "POST",
     credentials: "include", 
-    headers:{
-        'Content-Type': 'application/json'
-    }, 
     body: fd,
     });
      const data = await res.json()

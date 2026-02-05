@@ -22,7 +22,7 @@ function CartPage() {
         <div className='space-y-4'>
             {cart?.items?.map((item)=> (
 
-                <div className='flex items-center gap-4 border rounded-lg p-4 shadow-sm'>
+                <div key={item.book._id} className='flex items-center gap-4 border rounded-lg p-4 shadow-sm'>
                     <img src={`http://localhost:5000/images/${item?.book?.coverImage}`} className='rounded w-24 h-32 object-cover'/>
 
                     <div className='flex-1'>
