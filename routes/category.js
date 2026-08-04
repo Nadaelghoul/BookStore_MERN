@@ -1,6 +1,16 @@
 const express = require("express")
 const router =  express.Router()
 const Category = require("../models/CategorySchema")
+const connectDB = require('../config/db')
+
+router.use(async (req, res, next) => {
+   try {
+      await connectDB();
+      next();
+   } catch (error) {
+      return res.status(500).json({ message: "Database connection failed", error: error.message });
+   }
+});
 
 
 
