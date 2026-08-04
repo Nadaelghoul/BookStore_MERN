@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext'
+import { API_BASE } from '../../api'
 
 function AddBook() {
     const [categories, setCategories] = useState([]);
@@ -41,7 +42,7 @@ function AddBook() {
        
         const loadCats= async()=>{
             try {
-         const res = await fetch("http://localhost:5000/category/getCategories",{
+         const res = await fetch(`${API_BASE}/category/getCategories`,{
           method:"GET",
             credentials: "include",
          })
@@ -114,7 +115,7 @@ function AddBook() {
 
      try{
      setSubmitting(true);
-    const res = await fetch("http://localhost:5000/admin/createBook", {
+    const res = await fetch(`${API_BASE}/admin/createBook`, {
      method: "POST",
     credentials: "include", 
     body: fd,

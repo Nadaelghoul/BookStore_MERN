@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../auth/CartContext';
 import { Link } from 'react-router-dom';
+import { API_BASE, IMAGE_BASE } from '../api';
 
 function OnSaleProducts() {
   const [bookList, setBookList] = useState([]);
@@ -9,7 +10,7 @@ function OnSaleProducts() {
   const {addToCart} = useCart()
 
   useEffect(() => {
-    fetch("http://localhost:5000/books/getBooks")
+    fetch(`${API_BASE}/books/getBooks`)
       .then(res => res.json())
       .then(data => setBookList(data))
       .catch(err => console.error("Error fetching books:", err));
@@ -32,7 +33,7 @@ function OnSaleProducts() {
         
           <div key={book._id} className='relative flex flex-col items-center border p-4 rounded-lg'>
                       <Link to={`/bookDetails/${book?._id}`}>
-                      <img className='w-full h-[450px] ' src={`http://localhost:5000/images/${book.coverImage}`} />
+                      <img className='w-full h-[450px] ' src={`${IMAGE_BASE}/${book.coverImage}`} />
                      
                       <h6 className='text-center my-3'>{book.title}</h6>
                       </Link>

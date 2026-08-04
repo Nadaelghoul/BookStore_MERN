@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../auth/CartContext';
 import { Link } from 'react-router-dom';
+import { API_BASE, IMAGE_BASE } from '../api';
 
 
 
@@ -11,7 +12,7 @@ function FeaturedProducts() {
    const {addToCart} = useCart()
 
   useEffect(() => {
-    fetch("http://localhost:5000/books/getBooks")
+    fetch(`${API_BASE}/books/getBooks`)
       .then(res => res.json())
       .then(data => setBookList(data))
       .catch(err => console.error("Error fetching books:", err));
@@ -20,7 +21,7 @@ function FeaturedProducts() {
    const handleAdd= async(bookId)=>{ // refetch after addtocart to appear num of stock correctly after adding item from it
      await addToCart(bookId)
 
-     fetch("http://localhost:5000/books/getBooks")
+     fetch(`${API_BASE}/books/getBooks`)
      .then(res => res.json())
      .then(data => setBookList(data));
 
@@ -42,7 +43,7 @@ function FeaturedProducts() {
        {featuredBooks?.map((book) => (
             <div key={book._id} className='flex flex-col gap-5 border border-gray-300 p-4'>
              <Link to={`/bookDetails/${book?._id}`}>
-            <img className='w-full h-[450px] object-contain' src={`http://localhost:5000/images/${book.coverImage}`} />
+            <img className='w-full h-[450px] object-contain' src={`${IMAGE_BASE}/${book.coverImage}`} />
             <h6 className='text-center my-3'>{book.title}</h6>
             </Link>
             <span className='text-gray-400'>{book?.author}</span>

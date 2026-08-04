@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from "../auth/AuthContext"; 
+import { API_BASE } from '../api'
 
 function Login() {
     const { setUser } = useAuth();
@@ -18,7 +19,7 @@ function Login() {
      setLoading(true)
      try {
 
-    const res = await fetch("http://localhost:5000/users/signin",{
+    const res = await fetch(`${API_BASE}/users/signin`,{
         method:"POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include", 

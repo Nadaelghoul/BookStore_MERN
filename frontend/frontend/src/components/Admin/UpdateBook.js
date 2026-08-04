@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { API_BASE } from '../../api'
 
 function UpdateBook() {
     const {id} = useParams()
@@ -9,7 +10,7 @@ function UpdateBook() {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/books/${id}`)
+        fetch(`${API_BASE}/books/${id}`)
         .then((res)=>res.json())
         .then((data)=> {
          setBook(data.book || data)
@@ -27,7 +28,7 @@ function UpdateBook() {
 
     const handleUpdate= async()=>{
         try {
-            const res = await fetch(`http://localhost:5000/books/updateBook/${id}`,{
+            const res = await fetch(`${API_BASE}/books/updateBook/${id}`,{
                 method:"PUT",
                  headers: { "Content-Type": "application/json" },
                  body:JSON.stringify(book)
@@ -50,7 +51,7 @@ function UpdateBook() {
     const handleDelete = async()=>{
         if(!window.confirm("are you sure you want to delete this book")) return
         try {
-            const res = await fetch(`http://localhost:5000/books/deleteBook/${id}`,{
+            const res = await fetch(`${API_BASE}/books/deleteBook/${id}`,{
                 method:"DELETE"
             })
 

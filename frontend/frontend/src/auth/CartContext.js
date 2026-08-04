@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { API_BASE } from "../api";
 
 const CartContext = createContext();
 
@@ -8,13 +9,13 @@ export function CartProvider({children}){
 
 
     useEffect(()=>{
-        fetch("http://localhost:5000/carts", {credentials:"include"}).then(res => res.json())
+        fetch(`${API_BASE}/carts`, {credentials:"include"}).then(res => res.json())
         .then(data =>setCart(data.cart))
     },[])
 
 
   const addToCart = async (bookId) => {
-  const res = await fetch("http://localhost:5000/carts/add", {
+  const res = await fetch(`${API_BASE}/carts/add`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -30,7 +31,7 @@ export function CartProvider({children}){
 
 
      const updateCart = async(bookId, quantity)=>{
-        const res = await fetch("http://localhost:5000/carts/update",{
+        const res = await fetch(`${API_BASE}/carts/update`,{
              method:"PUT",
             headers:{
               "Content-Type": "application/json" 
@@ -54,7 +55,7 @@ export function CartProvider({children}){
 
 
      const removeFromCart = async(bookId)=>{
-         const res = await fetch(`http://localhost:5000/carts/remove/${bookId}`,{
+         const res = await fetch(`${API_BASE}/carts/remove/${bookId}`,{
               method:"DELETE",
               credentials:"include",
          })

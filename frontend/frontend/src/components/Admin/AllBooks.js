@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext'
+import { API_BASE, IMAGE_BASE } from '../../api'
 
 
 function AllBooks() {
@@ -16,7 +17,7 @@ function AllBooks() {
   useEffect(() => {
     const fetchBooks = async()=>{
         try{
-            const res = await fetch("http://localhost:5000/admin/getBooks", {
+            const res = await fetch(`${API_BASE}/admin/getBooks`, {
                 method: "GET",
                 credentials: "include",
                 headers:{
@@ -61,7 +62,7 @@ if(error){
       {bookList?.map((book) => (
         <a key={book._id} href={`/admin/update-book/${book?._id}`}>
        <div className='flex flex-col gap-5 border border-gray-300 p-4 rounded-lg'>
-       <img src={`http://localhost:5000/images/${book.coverImage}`} />
+       <img src={`${IMAGE_BASE}/${book.coverImage}`} />
        <h6>{book?.title}</h6>
       <span className='text-gray-400'>{book?.author}</span>
       <strong className='text-[#F86D72]'>{book?.price} $</strong>

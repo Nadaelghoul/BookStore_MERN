@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react'
 import { useCart } from '../auth/CartContext'
+import { IMAGE_BASE } from '../api'
 
 function CartPage() {
     const {cart,updateCart,removeFromCart} = useCart()
@@ -23,7 +24,7 @@ function CartPage() {
             {cart?.items?.map((item)=> (
 
                 <div key={item.book._id} className='flex items-center gap-4 border rounded-lg p-4 shadow-sm'>
-                    <img src={`http://localhost:5000/images/${item?.book?.coverImage}`} className='rounded w-24 h-32 object-cover'/>
+                    <img src={`${IMAGE_BASE}/${item?.book?.coverImage}`} className='rounded w-24 h-32 object-cover'/>
 
                     <div className='flex-1'>
                     <h2 className='font-semibold'>{item?.book?.title}</h2>

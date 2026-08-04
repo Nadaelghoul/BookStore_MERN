@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useCart } from '../auth/CartContext'
+import { API_BASE, IMAGE_BASE } from '../api'
 function BookDetails() {
 
     const {id} = useParams()
@@ -15,7 +16,7 @@ function BookDetails() {
 
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/books/${id}`)
+        fetch(`${API_BASE}/books/${id}`)
         .then((res)=>res.json())
         .then((data)=> {
          setBook(data.book || data)
@@ -42,7 +43,7 @@ function BookDetails() {
         <div className='grid grid-cols-1 md:grid-cols-2  gap-10 items-start  bg-white shadow-md rounded-lg p-6'>
 
         <div className='flex justify-center'>
-        <img className='w-80 h-[450px] object-cover rounded-lg shadow' src={`http://localhost:5000/images/${book.coverImage}`}/>
+        <img className='w-80 h-[450px] object-cover rounded-lg shadow' src={`${IMAGE_BASE}/${book.coverImage}`}/>
 
 
         </div>

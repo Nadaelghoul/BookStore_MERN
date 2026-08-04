@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from '../auth/CartContext';
 import { Link } from 'react-router-dom';
+import { API_BASE, IMAGE_BASE } from '../api';
 
 function DiscountPercent() {
   const [bookList, setBookList] = useState([]);
@@ -8,7 +9,7 @@ function DiscountPercent() {
   const {addToCart} = useCart()
 
   useEffect(() => {
-    fetch("http://localhost:5000/books/getBooks")
+    fetch(`${API_BASE}/books/getBooks`)
       .then(res => res.json())
       .then(data => setBookList(data))
       .catch(err => console.error("Error fetching books:", err));
@@ -39,7 +40,7 @@ function DiscountPercent() {
   <Link to={`/bookDetails/${book?._id}`}>
     <img
       className='w-full h-[90%] object-contain '
-      src={`http://localhost:5000/images/${book.coverImage}`}
+      src={`${IMAGE_BASE}/${book.coverImage}`}
       alt={book.title}
     />
     <h6 className="text-center my-3">{book.title}</h6>

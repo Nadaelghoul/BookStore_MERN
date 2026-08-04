@@ -1,10 +1,12 @@
 const express = require("express")
+const path = require("path")
 const app = express()
 
 const cors = require("cors")
+const clientUrl = process.env.CLIENT_URL || "http://localhost:3000"
 app.use(
   cors({
-    origin: "http://localhost:3000", 
+    origin: clientUrl,
     credentials: true,
     methods:['GET', 'POST', 'PUT','DELETE'],
     allowedHeaders:['Content-Type', 'Authorization']             
@@ -30,10 +32,12 @@ app.use("/category", require("./routes/category"));
 app.use("/admin", require("./routes/admin"));
 app.use("/carts", require("./routes/carts"));
 
-app.use("/images", express.static("images"))
+app.use("/images", express.static(path.join(__dirname, "images")))
 
+module.exports = app;
 
-
-app.listen(PORT, () => {
+if (require.main === module) {
+  app.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`)
-})
+  })
+}

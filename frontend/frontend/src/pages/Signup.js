@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from "../auth/AuthContext"; 
+import { API_BASE } from '../api'
 
 function Signup() {
 
@@ -18,7 +19,7 @@ function Signup() {
     setLoading(true)
 
     try{
-   const res = await fetch("http://localhost:5000/users/register",{
+   const res = await fetch(`${API_BASE}/users/register`,{
      method:"POST",
      headers: { "Content-Type": "application/json" },
     credentials: "include", 
