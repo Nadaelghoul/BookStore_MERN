@@ -3,16 +3,7 @@ const router =  express.Router()
 const Cart = require('../models/CartSchema')
 const Book = require("../models/Book.js")
 const {cookieAuth} = require("../auth/middleware")
-const connectDB = require('../config/db')
 
-router.use(async (req, res, next) => {
-    try {
-        await connectDB();
-        next();
-    } catch (error) {
-        return res.status(500).json({ message: "Database connection failed", error: error.message });
-    }
-});
 
 router.get("/", cookieAuth, async(req,res)=>{
     try{

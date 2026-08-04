@@ -4,16 +4,7 @@ const User = require("../models/UserSchema")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const {cookieAuth} = require("../auth/middleware")
-const connectDB = require('../config/db')
 
-router.use(async (req, res, next) => {
-    try {
-        await connectDB();
-        next();
-    } catch (error) {
-        return res.status(500).json({ message: "Database connection failed", error: error.message });
-    }
-});
 
 router.post("/register", async(req,res) => {
     const {name,email, password} = req.body

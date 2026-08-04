@@ -3,16 +3,7 @@ const router =  express.Router()
 const Book = require('../models/Book.js')
 const multer = require('multer')
 const {auth, cookieAuth} = require('../auth/middleware.js')
-const connectDB = require('../config/db')
 
-router.use(async (req, res, next) => {
-  try {
-    await connectDB();
-    next();
-  } catch (error) {
-    return res.status(500).json({ message: "Database connection failed", error: error.message });
-  }
-});
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
