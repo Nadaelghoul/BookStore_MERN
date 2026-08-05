@@ -19,9 +19,6 @@
       "dest": "/api/index.js"
     },
     {
-      "handle": "filesystem"
-    },
-    {
       "src": "/(.*)",
       "dest": "/frontend/frontend/index.html"
     }
