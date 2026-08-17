@@ -9,19 +9,25 @@
       "src": "frontend/frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-       "distDir": "frontend/frontend/build"
+        "distDir": "frontend/frontend/build"
       }
     }
   ],
-"rewrites": [
-    { "source": "/api", "destination": "/server.js" },
-    { "source": "/api/(.*)", "destination": "/server.js" },
-    { "source": "/users/(.*)", "destination": "/server.js" },
-    { "source": "/books/(.*)", "destination": "/server.js" },
-    { "source": "/category/(.*)", "destination": "/server.js" },
-    { "source": "/admin/(.*)", "destination": "/server.js" },
-    { "source": "/carts/(.*)", "destination": "/server.js" },
-    { "source": "/images/(.*)", "destination": "/server.js" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    {
+      "src": "/(users|books|category|admin|carts|images)(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
