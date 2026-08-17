@@ -41,11 +41,11 @@ const cartRoutes = require("./routes/carts");
 
 
 
-app.use("/api/users", userRoutes);
-app.use("/api/books", bookRoutes);
-app.use("/api/category", categoryRoutes);
-app.use("/api/admin", adminRoutes);
-app.use("/api/carts", cartRoutes);
+app.use("/users", userRoutes);
+app.use("/books", bookRoutes);
+app.use("/category", categoryRoutes);
+app.use("/admin", adminRoutes);
+app.use("/carts", cartRoutes);
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 
