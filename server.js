@@ -58,7 +58,7 @@ app.use("/carts", cartRoutes);
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 // 3. Fallback 404 JSON handler to prevent returning HTML on missing routes
-app.use("*", (req, res) => {
+app.use((req, res) => {
   res.status(404).json({ success: false, error: `Route ${req.originalUrl} not found` });
 });
 
