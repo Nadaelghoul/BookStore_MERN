@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+=======
+{
+  "version": 2,
+  "builds": [
+    {
+       "src": "server.js",
+       "use": "@vercel/node",
+      "config": {
+        "distDir": "build"
+      }
+    },
+    {
+      "src": "frontend/frontend/**",
+       "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/frontend/$1"
+    }
+  ]
+  
+}
+>>>>>>> 6f34e7c932f7b93695b6d76c4c0941334954c1d3
