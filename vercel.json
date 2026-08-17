@@ -11,10 +11,7 @@
       "config": {
         "distDir": "build"
       }
-    },
-     {
-      "handle": "filesystem"
-    },
+    }
   ],
   "rewrites": [
     { "source": "/users", "destination": "/server.js" },
