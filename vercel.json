@@ -13,7 +13,9 @@
       }
     }
   ],
-  "rewrites": [
+ "rewrites": [
+    { "source": "/api", "destination": "/server.js" },
+    { "source": "/api/:path*", "destination": "/server.js" },
     { "source": "/users", "destination": "/server.js" },
     { "source": "/users/:path*", "destination": "/server.js" },
     { "source": "/books", "destination": "/server.js" },
@@ -25,6 +27,6 @@
     { "source": "/carts", "destination": "/server.js" },
     { "source": "/carts/:path*", "destination": "/server.js" },
     { "source": "/images/:path*", "destination": "/server.js" },
-    { "source": "/(.*)", "destination": "/frontend/frontend/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
