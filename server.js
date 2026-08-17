@@ -21,13 +21,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.use("/users", require("./routes/users"));
-app.use("/books", require("./routes/books"));
-app.use("/category", require("./routes/category"));
-app.use("/admin", require("./routes/admin"));
-app.use("/carts", require("./routes/carts"));
+app.use("/api/users", require("./routes/users"));
+app.use("/api/books", require("./routes/books"));
+app.use("/api/category", require("./routes/category"));
+app.use("/api/admin", require("./routes/admin"));
+app.use("/api/carts", require("./routes/carts"));
 
-app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/api/images", express.static(path.join(__dirname, "images")));
 
 module.exports = app;
 
