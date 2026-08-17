@@ -13,20 +13,15 @@
       }
     }
   ],
- "rewrites": [
+"rewrites": [
     { "source": "/api", "destination": "/server.js" },
-    { "source": "/api/:path*", "destination": "/server.js" },
-    { "source": "/users", "destination": "/server.js" },
-    { "source": "/users/:path*", "destination": "/server.js" },
-    { "source": "/books", "destination": "/server.js" },
-    { "source": "/books/:path*", "destination": "/server.js" },
-    { "source": "/category", "destination": "/server.js" },
-    { "source": "/category/:path*", "destination": "/server.js" },
-    { "source": "/admin", "destination": "/server.js" },
-    { "source": "/admin/:path*", "destination": "/server.js" },
-    { "source": "/carts", "destination": "/server.js" },
-    { "source": "/carts/:path*", "destination": "/server.js" },
-    { "source": "/images/:path*", "destination": "/server.js" },
+    { "source": "/api/(.*)", "destination": "/server.js" },
+    { "source": "/users/(.*)", "destination": "/server.js" },
+    { "source": "/books/(.*)", "destination": "/server.js" },
+    { "source": "/category/(.*)", "destination": "/server.js" },
+    { "source": "/admin/(.*)", "destination": "/server.js" },
+    { "source": "/carts/(.*)", "destination": "/server.js" },
+    { "source": "/images/(.*)", "destination": "/server.js" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
